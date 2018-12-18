@@ -4,7 +4,7 @@ Control your tv through voice or a webpage using Dialogflow + flask + LIRC on a 
 ## Wiring and LIRC
 First things first, let's get LIRC on the raspberry pi. Credit to [piddler](http://www.piddlerintheroot.com/ir-blaster-lirc/) for the best instructions I found to get this part of the project working.
 
-##Installing LIRC and Setting Up Dependencies
+## Installing LIRC and Setting Up Dependencies
 First let's install LIRC:
 
     sudo apt-get install lirc
@@ -49,7 +49,7 @@ And add the following to this file:
     options lirc_rpi gpio_in_pin=18 gpio_out_pin=22
 
 
-##Testing out the IR Receiver
+## Testing out the IR Receiver
 Do a reboot of the pi and then it's time to test out the IR Receiver. 
 
     sudo modprobe lirc_rpi
@@ -66,7 +66,7 @@ You should now be able to point your remote at your IR Receiver, and when you pr
 
 Exit when you've confirmed that the IR Receiver is setup correctly by pressing 'CTRL + C'
 
-##Recording the IR Inputs
+## Recording the IR Inputs
 First run this command: 
     
     sudo kill $(pidof lircd)
@@ -90,7 +90,7 @@ Before you do start issuing commands, quickly run this command then you're ready
 
     sudo lircd --device /dev/lirc0
 
-##Test it out!
+## Test it out!
 To see one of your commands in action try the following command (replace KEY_POWER with any of the other commands you mapped out to see them work too!):
 
     irsend SEND_ONCE /home/pi/lircd.conf KEY_POWER
