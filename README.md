@@ -137,7 +137,7 @@ if __name__ == "__main__":
 
 Test out the server to make sure it's working by going running it:
 
-    python irblaster.py
+    $ python irblaster.py
     
 Navigate to 0.0.0.0:5000 in your browser and you should see 'Hello there - Flask is working!'. Stop the server by running CTRL+C. 
 
@@ -163,7 +163,7 @@ if __name__ == "__main__":
 ```
 Save the file and run the server again with the following command: 
 
-    python irblaster.py
+    $ python irblaster.py
 
 Next test out your new API endpoint using the browser again. We'll switch the API to a POST request later on with a body (we'll need to for it to work with dialogflow / google assistant). Entering 0.0.0.0:5000/api/v1/poweron into a browser this time should actually envoke the POWER_ON command and turn on the tv! Switch 'poweron' to any other mapping you did to see your API now configured to work with any of your commands!
 
@@ -171,9 +171,34 @@ Next test out your new API endpoint using the browser again. We'll switch the AP
 
 Great - now that we have the APIs working to control the IR LED we'll create a simple webpage that can be used to trigger the various remote control commands too!
 
-Let's create an index.html
+Let's create a templates director with an index.html file inside:
 
-Next we'll do change our irblaster.py file to import render_template in order to use our newly created index.html page. This will allow the page to render when hitting the Flask server's root endpoint:
+    $ mkdir templates
+    $ nano index.html
+
+Add the following to the index.html. Add buttons for each of the different Remote Commands that you created for your Flask API:
+
+```html
+<html>
+	<head>
+		<title>MyRemote</title>
+		<link rel="stylesheet" href='/static/style.css' />
+	</head>
+	<body>
+		<h1>MY REMOTE!</h1>
+		<div>
+			<button id='power on'>Power On</button>
+			<button id='mute'>Mute</button>
+		</div>
+		<div>
+			<button id='volume up'>Volume Up</button>
+			<button id='volume down'>Volume Down</button>
+		</div>
+	</body>
+</html>
+```
+
+Navigate back to the root project folder and change the irblaster.py file to import render_template in order to use our newly created index.html page. This will allow the page to render when hitting the Flask server's root endpoint:
 
 ```python
 from flask import Flask, render_template
@@ -194,4 +219,4 @@ if __name__ == "__main__":
     app.run(debug=True, host='0.0.0.0')
 ```
 
-Next thing we'll be building is the pretty front end remote control so that you can just as easily control you tv through a web page. 
+Start the server again and if you navigate. 
