@@ -1,7 +1,16 @@
 # ir-blaster (LIRC Setup)
-Control your tv through voice or a webpage using Dialogflow + flask + LIRC on a raspberry pi! See the the full project instructions at drewnay.com. 
+Control your tv with your voice or a GUI using Dialogflow + flask + LIRC with a Raspberry Pi & Google Assistant! See the the full project instructions at drewnay.com. 
 
-## Wiring and LIRC
+Things you'll need:
+- Raspberry Pi
+- IR Led
+- IR Receiver
+- Google Home 
+- Wires 
+- Transistor
+- Resistor
+
+## PART 1 - Wiring and LIRC
 First things first, let's get LIRC on the raspberry pi. Credit to [piddler](http://www.piddlerintheroot.com/ir-blaster-lirc/) for the best instructions I found to get this part of the project working.
 
 ## Installing LIRC and Setting Up Dependencies
@@ -91,8 +100,33 @@ Before you do start issuing commands, quickly run this command then you're ready
     sudo lircd --device /dev/lirc0
 
 ## Test it out!
-To see one of your commands in action try the following command (replace KEY_POWER with any of the other commands you mapped out to see them work too!):
+To see one of your commands in action try the following command (replace KEY_POWER) with any of the other commands you mapped out to see them work too!):
 
     irsend SEND_ONCE /home/pi/lircd.conf KEY_POWER
 
 And there you have it, you have a working raspberry pi IR Remote that can replay any of your commands. It's also worth noting that you don't need to map out all of the remote commands if your remote is listed [in here](http://lirc-remotes.sourceforge.net/remotes-table.html) (replace the lircd.conf file with the one from the site). 
+
+## PART 2 - Flask APIs with a pretty Remote UI!
+
+First thing we'll be creating are the APIs using Flask so that we can hit them from the Dialogflow events or through the GUI to send commands to the IR led.
+
+First we will setup Flask:
+
+    sudo pip install flask
+
+Next create a file called irblaster.py with the following code:
+
+```python
+from flask import Flask, render_template, request, jsonify, make_response
+import os
+
+app = Flask(__name__)
+
+
+# Home routed to show index.html
+@app.route('/')
+def index():
+	return render_template('index.html')
+```
+
+Next thing we'll be building is the pretty front end remote control so that you can just as easily control you tv through a web page. 
