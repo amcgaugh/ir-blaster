@@ -1,4 +1,4 @@
-# ir-blaster (LIRC Setup)
+# IR Blaster TV Control using Voice or GUI!
 Control your tv with your voice or a GUI using Dialogflow + flask + LIRC with a Raspberry Pi & Google Assistant! See the the full project instructions at drewnay.com. Here is a quick video demonstrating what we'll be building:
 
 VIDEO PLACEHOLDER
