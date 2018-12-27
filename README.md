@@ -300,6 +300,57 @@ def controlremote(remotecontrol):
     	os.system("irsend SEND_ONCE /home/pi/lirc.conf KEY_POWER")
 	return 'performing the following remote control action: ' + remotecontrol
 
+@app.route('/api/v2/remote', methods = ['POST'])
+def remote():
+  data = request.get_json(silent = True, force = True);
+	if request.method == 'POST':
+		action = data.get("queryResult").get("parameters").get("control");
+		if action == "power on": 
+			os.system("irsend SEND_ONCE /home/pi/lirc.conf KEY_POWER")
+			reply = {
+ 			"fulfillmentText": "Sure " + action,
+			}
+			return make_response(jsonify(reply));
+		elif action == 'power off':
+  			os.system("irsend SEND_ONCE /home/pi/lirc.conf KEY_POWER")
+			reply = {
+  			"fulfillmentText": "Sure " + action,
+			}
+			return make_response(jsonify(reply));
+		elif action == 'volume up': 
+			os.system("irsend SEND_ONCE /home/pi/lirc.conf KEY_VOLUMEUP")
+			reply = {
+  			"fulfillmentText": "Sure " + action,
+			}
+			return make_response(jsonify(reply));
+		elif action == 'volume down': 
+			os.system("irsend SEND_ONCE /home/pi/lirc.conf KEY_VOLUMEDOWN")
+			reply = {
+ 			 "fulfillmentText": "Sure " + action,
+			}
+			return make_response(jsonify(reply));
+		else :
+  			errorreply = {
+  		    "fulfillmentText": "it didn't work! try again.",
+  			}
+			return make_response(jsonify(errorreply));
+
 if __name__ == "__main__":
     app.run(debug=True, host='0.0.0.0')
 ```
+
+As you can see we've added a few different actions along with their corresponding action. Modify and add any other remote commands that you've created as another elif action along with the corresponding irsend command. The above example has four - power on, power off, volume up and volume down. Save your changes and restart the irblaster flask server once more. 
+
+Before we start on the final part - it will be important to expose your server to the outside world using port forwarding or a service like ngrok or serveo. I won't go over the details of that in this tutorial - but feel free to do a quick google search with 100s of easy solutions. It will be important that whatever service you use allows you to expose the server over https  - not http as a secure connection is needed for Dialogflow. 
+
+## Part 3 - Dialogflow and Actions. Control the remote with your voice!
+
+This section will teach you how to create a dialogflow event and a google action to respond to a users voice to create the API request to your Flask server. 
+
+First you will need to create a new 'Intent'. Name the intent something simple, we'll call ours 'voiceremote'. 
+
+Next we'll create a new 'Entity'. Again call it something simple, we'll call ours 'remote_options'. Fill the entities with all of your recorded remote commands - you can see the ones I added below. If you want to use synonyms ('turn off' instead of 'power off') feel free to add in the synonyms. Save it and go back to your voiceremote Intent. 
+
+In the 'Actions and Parameters' section, add 'remote_request' to the 'entity' column and make sure to click the box that says the entity is mandatory. 
+
+Add some training phrases to add some variations on how you would invoke some of your entities. 
