@@ -176,7 +176,7 @@ Let's create a templates director with an index.html file inside:
     $ mkdir templates
     $ nano index.html
 
-Add the following to the index.html. Add buttons for each of the different Remote Commands that you created for your Flask API:
+Add the following to the index.html. Add buttons for each of the different Remote Commands that you created for your Flask API and be sure to make each buttons' 'id' the same as the API endpoint (example 'poweron'):
 
 ```html
 <html>
@@ -187,15 +187,40 @@ Add the following to the index.html. Add buttons for each of the different Remot
 	<body>
 		<h1>MY REMOTE!</h1>
 		<div>
-			<button id='power on'>Power On</button>
+			<button id='poweron'>Power On</button>
 			<button id='mute'>Mute</button>
 		</div>
 		<div>
-			<button id='volume up'>Volume Up</button>
-			<button id='volume down'>Volume Down</button>
+			<button id='volumeup'>Volume Up</button>
+			<button id='volumedown'>Volume Down</button>
 		</div>
 	</body>
 </html>
+```
+Add some style to it by creating a style.css file in a 'static' directory by performing the following:
+
+    $ cd ..
+    $ mkdir static
+    $ cd static
+    $ nano style.css
+    
+Copy the following into the style sheet - or edit it to make it even better!
+
+```python
+body {
+    background: white;
+    color: grey;
+    text-align: center;
+}
+
+button {
+  color: white;
+  background-color: #008CBA;  
+  font-size: 12px;
+  padding: 12px 28px;
+  border-radius: 4px;
+  width: 49%;
+}
 ```
 
 Navigate back to the root project folder and change the irblaster.py file to import render_template in order to use our newly created index.html page. This will allow the page to render when hitting the Flask server's root endpoint:
@@ -219,4 +244,38 @@ if __name__ == "__main__":
     app.run(debug=True, host='0.0.0.0')
 ```
 
-Start the server again and if you navigate. 
+Start the server again and if you navigate to the 0.0.0.0:5000 now in your browser you should see your remote! Next let's hook up the buttons to the API so that it can send the appropriate IR led command! Open up the index.html file again and make the following edits - adding a function to each button click and defining the appropriate api in the <script>:
+
+```html
+<html>
+	<head>
+		<title>MyRemote</title>
+		<link rel="stylesheet" href='/static/style.css' />
+	</head>
+	<body>
+		<h1>MY REMOTE!</h1>
+		<div>
+			<button id='poweron', onclick='remoteCommand(this.id)'>Power On</button>
+			<button id='mute', onclick='remoteCommand(this.id)'>Mute</button>
+		</div>
+		<div>
+			<button id='volumeup', onclick='remoteCommand(this.id)'>Volume Up</button>
+			<button id='volumedown', onclick='remoteCommand(this.id)'>Volume Down</button>
+		</div>
+	</body>
+	<script>
+		function remoteCommand(value){
+		  const url = '0.0.0.0:5000/api/v1/' + value		  
+		  fetch(url, {
+		  	method:"GET", 
+		  	protocol:'http:',
+		    	headers: {
+            			"Content-Type": "text/plain"
+        		}
+		     })
+          	  }
+	</script>
+</html>
+```
+
+Save the updated index.html document and then restart the irblaster.py server. Navigate to 0.0.0.0:5000 and you should see you remote. You should be able to click on any of the buttons and it should perform the corresponding command! Congratulations, you now have a working remote using the GUI webpage! 
