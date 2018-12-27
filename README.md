@@ -145,6 +145,7 @@ Now we're going to add a new endpoint that will let us control the IR LED. If yo
 
 ```python
 from flask import Flask
+import os
 
 app = Flask(__name__)
 
@@ -227,6 +228,7 @@ Navigate back to the root project folder and change the irblaster.py file to imp
 
 ```python
 from flask import Flask, render_template
+import os
 
 app = Flask(__name__)
 
@@ -279,3 +281,25 @@ Start the server again and if you navigate to the 0.0.0.0:5000 now in your brows
 ```
 
 Save the updated index.html document and then restart the irblaster.py server. Navigate to 0.0.0.0:5000 and you should see you remote. You should be able to click on any of the buttons and it should perform the corresponding command! Congratulations, you now have a working remote using the GUI webpage! 
+
+We are going to make a final few modifications to the tvblaster.py APIs now so that they are ready to act as fulfillment for a dialogflow intent (this will make more sense when we get to that section - but trust me anyways!). 
+
+```python
+from flask import Flask, render_template, request, jsonify, make_response
+import os
+
+app = Flask(__name__)
+
+@app.route('/')
+def index():
+	return render_template('index.html') 
+
+@app.route('/api/v1/<remotecontrol>')
+def controlremote(remotecontrol):
+    if remotecontrol == "poweron"
+    	os.system("irsend SEND_ONCE /home/pi/lirc.conf KEY_POWER")
+	return 'performing the following remote control action: ' + remotecontrol
+
+if __name__ == "__main__":
+    app.run(debug=True, host='0.0.0.0')
+```
