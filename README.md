@@ -4,13 +4,13 @@ Control your tv with your voice or a GUI using Dialogflow + flask + LIRC with a 
 VIDEO PLACEHOLDER
 
 Things you'll need:
-- Raspberry Pi
-- IR Led
-- IR Receiver
+- Raspberry Pi 
+- [IR Emitter LED and IR Receiver](https://www.amazon.ca/gp/product/B07FFQ9B9H/ref=oh_aui_detailpage_o01_s00?ie=UTF8&psc=1)
 - Google Home 
-- Wires 
-- Transistor
-- Resistor
+- Breadboard
+- [Jumper Cables](https://www.amazon.ca/Breadboard-Solderless-Prototype-Male-Female-Female-Female/dp/B0758CK1V4/ref=sr_1_1_sspa?ie=UTF8&qid=1546292926&sr=8-1-spons&keywords=arduino+jumper+cables&psc=1) 
+- [BC547 Transistor](https://www.amazon.ca/Transistor-transistors-Assortment-2N2222-S9015-BC327-BC558/dp/B075TDNYJB/ref=sr_1_1?rps=1&ie=UTF8&qid=1546293038&sr=8-1&keywords=bc547&refinements=p_85%3A5690392011)
+- [220 Ohm Resistor](https://www.amazon.ca/Haitronic-Resistor-Assortment-Education-Experiment/dp/B072Z72Y98/ref=sr_1_2_sspa?ie=UTF8&qid=1546293115&sr=8-2-spons&keywords=resistor+kit&psc=1)
 
 ## PART 1 - Wiring and LIRC
 First things first, let's get LIRC on the raspberry pi. Credit to [piddler](http://www.piddlerintheroot.com/ir-blaster-lirc/) for the best instructions I found to get this part of the project working.
