@@ -77,7 +77,11 @@ then:
 
     $ irrecord -d /dev/lirc0 ~/lircd.conf
 
-Follow the instructions in the console - write a valid command (ie: KEY_POWER) and then press the corresponding button on the remote. When you are done with all the button's you want recorded check to make sure that the recordings were captured by running:
+Follow the instructions in the console (this includes button mashing a bunch of remote commands until 80 dots appear, really annoying!) - write a valid command (ie: KEY_POWER) and then press the corresponding button on the remote. For a list of valid commands you can open another terminal window and enter:
+
+    $ irrecord --list-namespace
+
+When you are done with all the button's you want recorded check to make sure that the recordings were captured by running:
 
     $ nano home/pi/lircd.conf
 
