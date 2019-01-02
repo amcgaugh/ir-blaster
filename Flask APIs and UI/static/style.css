@@ -1,0 +1,14 @@
+body {
+    background: white;
+    color: grey;
+    text-align: center;
+}
+
+button {
+  color: white;
+  background-color: #008CBA;  
+  font-size: 12px;
+  padding: 12px 28px;
+  border-radius: 4px;
+  width: 49%;
+}
