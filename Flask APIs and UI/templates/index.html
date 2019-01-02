@@ -1,0 +1,29 @@
+<html>
+	<head>
+		<title>MyRemote</title>
+		<link rel="stylesheet" href='/static/style.css' />
+	</head>
+	<body>
+		<h1>MY REMOTE!</h1>
+		<div>
+			<button id='poweron', onclick='remoteCommand(this.id)'>Power On</button>
+			<button id='mute', onclick='remoteCommand(this.id)'>Mute</button>
+		</div>
+		<div>
+			<button id='volumeup', onclick='remoteCommand(this.id)'>Volume Up</button>
+			<button id='volumedown', onclick='remoteCommand(this.id)'>Volume Down</button>
+		</div>
+	</body>
+	<script>
+		function remoteCommand(value){
+		  const url = '0.0.0.0:5000/api/v1/' + value		  
+		  fetch(url, {
+		  	method:"GET", 
+		  	protocol:'http:',
+		    	headers: {
+            			"Content-Type": "text/plain"
+        		}
+		     })
+          	  }
+	</script>
+</html>
