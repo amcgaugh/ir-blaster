@@ -18,6 +18,9 @@ Before you get started, here are the things you'll need for this project:
 - [220 Ohm Resistor](https://www.amazon.ca/Haitronic-Resistor-Assortment-Education-Experiment/dp/B072Z72Y98/ref=sr_1_2_sspa?ie=UTF8&qid=1546293115&sr=8-2-spons&keywords=resistor+kit&psc=1)
 
 Follow along in order to create your own Voice Controlled Remote! 
-[Step 1](https://github.com/amcgaugh/ir-blaster/blob/master/LIRC/README.md)
-[Step 2](https://github.com/amcgaugh/ir-blaster/blob/master/Flask%20APIs%20and%20UI/README.md)
-[Step 3](https://github.com/amcgaugh/ir-blaster/blob/master/Dialogflow/README.md)
+
+- [Step 1](https://github.com/amcgaugh/ir-blaster/blob/master/LIRC/README.md)
+
+- [Step 2](https://github.com/amcgaugh/ir-blaster/blob/master/Flask%20APIs%20and%20UI/README.md)
+
+- [Step 3](https://github.com/amcgaugh/ir-blaster/blob/master/Dialogflow/README.md)
