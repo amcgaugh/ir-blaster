@@ -7,7 +7,7 @@ PLACEHOLDER FOR SCHEMATIC IMAGE
 Next let's get LIRC on the raspberry pi. Credit to [piddler](http://www.piddlerintheroot.com/ir-blaster-lirc/) for the best instructions I found to get this part of the project working.
 
 ## Installing LIRC and Setting Up Dependencies
-First let's install LIRC:
+First let's install [LIRC](http://www.lirc.org):
 
     $ sudo apt-get install lirc
 
@@ -77,7 +77,7 @@ then:
 
     $ irrecord -d /dev/lirc0 ~/lircd.conf
 
-Follow the instructions in the console - write the command (ie KEY_POWER) and then press the corresponding button on the remote. When you are done with all the button's you want recorded check to make sure that the recordings were captured by running:
+Follow the instructions in the console - write a valid command (ie: KEY_POWER) and then press the corresponding button on the remote. When you are done with all the button's you want recorded check to make sure that the recordings were captured by running:
 
     $ nano home/pi/lircd.conf
 
