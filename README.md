@@ -19,6 +19,6 @@ Before you get started, here are the things you'll need for this project:
 
 Follow along in order to create your own Voice Controlled Remote! 
 
-- [Step 1](https://github.com/amcgaugh/ir-blaster/blob/master/LIRC/README.md)
-- [Step 2](https://github.com/amcgaugh/ir-blaster/blob/master/Flask%20APIs%20and%20UI/README.md)
-- [Step 3](https://github.com/amcgaugh/ir-blaster/blob/master/Dialogflow/README.md)
+- [Step 1 - LIRC and Wiring](https://github.com/amcgaugh/ir-blaster/blob/master/LIRC/README.md)
+- [Step 2 - Flask APIs and UI](https://github.com/amcgaugh/ir-blaster/blob/master/Flask%20APIs%20and%20UI/README.md)
+- [Step 3 - Dialogflow and Actions](https://github.com/amcgaugh/ir-blaster/blob/master/Dialogflow/README.md)
