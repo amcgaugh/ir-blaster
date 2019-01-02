@@ -18,7 +18,7 @@ Edit the modules file:
 Add the following to the file:
 
     lirc_dev
-    lirc_rpi gpio_in_pin=18 gpio_out_pin=22
+    lirc_rpi gpio_in_pin=17 gpio_out_pin=22
 
 Next we'll edit the hardware file:
 
@@ -40,7 +40,7 @@ Edit the boot config file:
 
 Add the following to the file:
 
-    dtoverlay=lirc-rpi,gpio_in_pin=18,gpio_out_pin=22
+    dtoverlay=lirc-rpi,gpio_in_pin=17,gpio_out_pin=22
 
 Create an ir-remote.conf file:
 
@@ -48,7 +48,7 @@ Create an ir-remote.conf file:
 
 And add the following to this file:
     
-    options lirc_rpi gpio_in_pin=18 gpio_out_pin=22
+    options lirc_rpi gpio_in_pin=17 gpio_out_pin=22
 
 
 ## Testing out the IR Receiver
