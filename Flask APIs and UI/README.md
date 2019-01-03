@@ -127,7 +127,7 @@ def index():
 
 @app.route('/api/v1/<remotecontrol>')
 def controlremote(remotecontrol):
-    if remotecontrol == "poweron"
+    if remotecontrol == "poweron":
     	os.system("irsend SEND_ONCE /home/pi/lirc.conf KEY_POWER")
 	return 'performing the following remote control action: ' + remotecontrol
 
@@ -185,7 +185,7 @@ def index():
 
 @app.route('/api/v1/<remotecontrol>')
 def controlremote(remotecontrol):
-    if remotecontrol == "poweron"
+    if remotecontrol == "poweron":
     	os.system("irsend SEND_ONCE /home/pi/lirc.conf KEY_POWER")
 	return 'performing the following remote control action: ' + remotecontrol
 
