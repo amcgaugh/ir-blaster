@@ -38,10 +38,10 @@ This section will teach you how to create a dialogflow event and a google action
 
 10. A window will popup - add 'voiceremote' to the explicit intent. For the implic intent you can add the 'Default Welcome Intent' and then click 'Manage Assistant App'
 
-![alt text]()
+![alt text](https://raw.githubusercontent.com/amcgaugh/ir-blaster/master/docs/Popupwindow.png)
 
 11. Click on the 'Decide how you action will be invoked'. For Display Name, call you action whatever you want to be asking the Google Assistant to request your skill, I have it as 'Andrew's Remote'. This will mean you will be invoking the skill by saying, "Hey Google, Ask Andrew's Remote to Power On". 
 
-![alt text]()
+![alt text](https://raw.githubusercontent.com/amcgaugh/ir-blaster/master/docs/HowInvoked.png)
 
-12. 
+12. From there you should be able to go to the 'Simulator' and give it a go. Or better yet - as long as you created this Action with the gmail account associated with your Google Assistants, you can now try it out live. Try saying "Hey Google, Ask Andrew's Remote to Power On" (or whatever you called your remote / whatever remote command you want to send). It should now be htiting your Flask API and invoking the Remote Command. Congrats you did it!
