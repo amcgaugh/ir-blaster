@@ -14,7 +14,7 @@ This section will teach you how to create a dialogflow event and a google action
 
 ![alt text](https://raw.githubusercontent.com/amcgaugh/ir-blaster/master/docs/Step%202.png)
 
-4. In the 'Actions and Parameters' section, add 'remote_options' to the 'entity' column and click the box that says the entity is mandatory. 
+4. Back in the voiceremote Intent go to the 'Actions and Parameters' section, add 'remote_options' to the 'entity' column and click the box that says the entity is mandatory. 
 
 ![alt text](https://raw.githubusercontent.com/amcgaugh/ir-blaster/master/docs/Step%203.png)
 
@@ -22,7 +22,7 @@ This section will teach you how to create a dialogflow event and a google action
 
 ![alt text](https://raw.githubusercontent.com/amcgaugh/ir-blaster/master/docs/Step%204.png)
 
-6. In the 'Responses' section, toggle on the 'Set this intent as the end of the conversation'. This ensures that when you invoke the intent it does not continue to ask for further requests or information. 
+6. In the 'Responses' section, add 'Google Assistant' and then toggle on the 'Set this intent as the end of the conversation'. This ensures that when you invoke the intent it does not continue to ask for further requests or information. 
 
 ![alt text](https://raw.githubusercontent.com/amcgaugh/ir-blaster/master/docs/Step%205.png)
 
@@ -32,5 +32,16 @@ This section will teach you how to create a dialogflow event and a google action
 
 8. You will then need to go to the 'Fulfillment' page and enable the webhook section. You will then enter the https url of the endpoint that you created using portforwarding or one of the services (ngrok or serveo). Be sure to append '/api/v2/remote' to the end of the request to hit the API that you created. 
 
-9. ![alt text](https://raw.githubusercontent.com/amcgaugh/ir-blaster/master/docs/Step%207.png)
+![alt text](https://raw.githubusercontent.com/amcgaugh/ir-blaster/master/docs/Step%207.png)
 
+9. Next go to 'Integrations' and select the Google Assistant. 
+
+10. A window will popup - add 'voiceremote' to the explicit intent. For the implic intent you can add the 'Default Welcome Intent' and then click 'Manage Assistant App'
+
+![alt text]()
+
+11. Click on the 'Decide how you action will be invoked'. For Display Name, call you action whatever you want to be asking the Google Assistant to request your skill, I have it as 'Andrew's Remote'. This will mean you will be invoking the skill by saying, "Hey Google, Ask Andrew's Remote to Power On". 
+
+![alt text]()
+
+12. 
