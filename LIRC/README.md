@@ -2,7 +2,7 @@
 
 For wiring - follow the following schematic:
 
-PLACEHOLDER FOR SCHEMATIC IMAGE
+![alt text](https://github.com/amcgaugh/ir-blaster/blob/master/docs/Schematic.png)
 
 Next let's get LIRC on the raspberry pi. Credit to [piddler](http://www.piddlerintheroot.com/ir-blaster-lirc/) for the best instructions I found to get this part of the project working.
 
