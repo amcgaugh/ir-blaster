@@ -83,7 +83,7 @@ Follow the instructions in the console (this includes button mashing a bunch of 
 
 When you are done with all the button's you want recorded check to make sure that the recordings were captured by running:
 
-    $ nano home/pi/lircd.conf
+    $ nano /home/pi/lircd.conf
 
 Then you will copy this file over to the /etc/lirc directory:
 
