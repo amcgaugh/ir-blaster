@@ -28,7 +28,7 @@ Test out the server to make sure it's working by going running it:
 
     $ python irblaster.py
     
-Navigate to 0.0.0.0:5000 in your browser and you should see 'Hello there - Flask is working!'. Stop the server by running CTRL+C. 
+Navigate to <raspberry pi local ip address>:5000 in your browser and you should see 'Hello there - Flask is working!'. Stop the server by running CTRL+C. 
 
 Now we're going to add a new endpoint that will let us control the IR LED. If you look we've added a new route '/api/<remotecontrol>' where replacing '<remotecontrol>' with 'poweron' will send the system command "irsend SEND_ONCE /home/pi/lirc.conf KEY_POWER". You can add a bunch of if-else or use switch-case statements to add any other irsend commands that you configured from STEP 1 of this tutorial. 
 
@@ -55,7 +55,7 @@ Save the file and run the server again with the following command:
 
     $ python irblaster.py
 
-Next test out your new API endpoint using the browser again. We'll switch the API to a POST request later on with a body (we'll need to for it to work with dialogflow / google assistant). Entering 0.0.0.0:5000/api/v1/poweron into a browser this time should actually envoke the POWER_ON command and turn on the tv! Switch 'poweron' to any other mapping you did to see your API now configured to work with any of your commands!
+Next test out your new API endpoint using the browser again. We'll switch the API to a POST request later on with a body (we'll need to for it to work with dialogflow / google assistant). Entering <raspberry pi local ip address>:5000/api/v1/poweron into a browser this time should actually envoke the POWER_ON command and turn on the tv! Switch 'poweron' to any other mapping you did to see your API now configured to work with any of your commands!
 
 ## Building the Remote Control GUI webpage
 
@@ -135,7 +135,7 @@ if __name__ == "__main__":
     app.run(debug=True, host='0.0.0.0')
 ```
 
-Start the server again and if you navigate to the 0.0.0.0:5000 now in your browser you should see your remote! Next let's hook up the buttons to the API so that it can send the appropriate IR led command! Open up the index.html file again and make the following edits - adding a function to each button click and defining the appropriate api in the <script>:
+Start the server again and if you navigate to the <raspberry pi local ip address>:5000 now in your browser you should see your remote! Next let's hook up the buttons to the API so that it can send the appropriate IR led command! Open up the index.html file again and make the following edits - adding a function to each button click and defining the appropriate api in the <script>:
 
 ```html
 <html>
@@ -156,7 +156,7 @@ Start the server again and if you navigate to the 0.0.0.0:5000 now in your brows
 	</body>
 	<script>
 		function remoteCommand(value){
-		  const url = '0.0.0.0:5000/api/v1/' + value		  
+		  const url = '<raspberry pi local ip address>:5000/api/v1/' + value		  
 		  fetch(url, {
 		  	method:"GET", 
 		  	protocol:'http:',
@@ -169,7 +169,7 @@ Start the server again and if you navigate to the 0.0.0.0:5000 now in your brows
 </html>
 ```
 
-Save the updated index.html document and then restart the irblaster.py server. Navigate to 0.0.0.0:5000 and you should see you remote. You should be able to click on any of the buttons and it should perform the corresponding command! Congratulations, you now have a working remote using the GUI webpage! 
+Save the updated index.html document and then restart the irblaster.py server. Navigate to <raspberry pi local ip address>:5000 and you should see your remote. You should be able to click on any of the buttons and it should perform the corresponding command! Congratulations, you now have a working remote using the GUI webpage! 
 
 We are going to make a final few modifications to the tvblaster.py APIs now so that they are ready to act as fulfillment for a dialogflow intent (this will make more sense when we get to that section - but trust me anyways!). 
 
@@ -230,4 +230,4 @@ if __name__ == "__main__":
 
 As you can see we've added a few different actions along with their corresponding action. Modify and add any other remote commands that you've created as another elif action along with the corresponding irsend command. The above example has four - power on, power off, volume up and volume down. Save your changes and restart the irblaster flask server once more. 
 
-Before we start on the final part - it will be important to expose your server to the outside world using port forwarding or a service like ngrok or serveo. I won't go over the details of that in this tutorial - but feel free to do a quick google search with 100s of easy solutions. It will be important that whatever service you use allows you to expose the server over https  - not http as a secure connection is needed for Dialogflow. 
+Before we start on the final part - it will be important to expose your server to the outside world using port forwarding or a service like ngrok or serveo. This will allow the Google Assistant to hit your API as it is coming from Google's servers, not locally. It will also be important that whatever service you use allows you to expose the server over https  - not http as a secure connection is needed for Dialogflow. 
