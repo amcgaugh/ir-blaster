@@ -28,7 +28,7 @@ Test out the server to make sure it's working by going running it:
 
     $ python irblaster.py
     
-Navigate to <raspberry pi local ip address>:5000 in your browser and you should see 'Hello there - Flask is working!'. Stop the server by running CTRL+C. 
+Navigate to raspberry-pi-local-ip:5000 in your browser and you should see 'Hello there - Flask is working!'. Stop the server by running CTRL+C. 
 
 Now we're going to add a new endpoint that will let us control the IR LED. If you look we've added a new route '/api/<remotecontrol>' where replacing '<remotecontrol>' with 'poweron' will send the system command "irsend SEND_ONCE /home/pi/lirc.conf KEY_POWER". You can add a bunch of if-else or use switch-case statements to add any other irsend commands that you configured from STEP 1 of this tutorial. 
 
@@ -55,7 +55,7 @@ Save the file and run the server again with the following command:
 
     $ python irblaster.py
 
-Next test out your new API endpoint using the browser again. We'll switch the API to a POST request later on with a body (we'll need to for it to work with dialogflow / google assistant). Entering <raspberry pi local ip address>:5000/api/v1/poweron into a browser this time should actually envoke the POWER_ON command and turn on the tv! Switch 'poweron' to any other mapping you did to see your API now configured to work with any of your commands!
+Next test out your new API endpoint using the browser again. We'll switch the API to a POST request later on with a body (we'll need to for it to work with dialogflow / google assistant). Entering raspberry-pi-local-ip:5000/api/v1/poweron into a browser this time should actually envoke the POWER_ON command and turn on the tv! Switch 'poweron' to any other mapping you did to see your API now configured to work with any of your commands!
 
 ## Building the Remote Control GUI webpage
 
@@ -135,7 +135,7 @@ if __name__ == "__main__":
     app.run(debug=True, host='0.0.0.0')
 ```
 
-Start the server again and if you navigate to the <raspberry pi local ip address>:5000 now in your browser you should see your remote! Next let's hook up the buttons to the API so that it can send the appropriate IR led command! Open up the index.html file again and make the following edits - adding a function to each button click and defining the appropriate api in the <script>:
+Start the server again and if you navigate to the raspberry-pi-local-ip:5000 now in your browser you should see your remote! Next let's hook up the buttons to the API so that it can send the appropriate IR led command! Open up the index.html file again and make the following edits - adding a function to each button click and defining the appropriate api in the <script>. Be sure to replace raspberry-pi-local-ip with your raspberry pi's local ip address:
 
 ```html
 <html>
@@ -156,7 +156,7 @@ Start the server again and if you navigate to the <raspberry pi local ip address
 	</body>
 	<script>
 		function remoteCommand(value){
-		  const url = '<raspberry pi local ip address>:5000/api/v1/' + value		  
+		  const url = 'raspberry-pi-local-ip:5000/api/v1/' + value		  
 		  fetch(url, {
 		  	method:"GET", 
 		  	protocol:'http:',
@@ -169,7 +169,7 @@ Start the server again and if you navigate to the <raspberry pi local ip address
 </html>
 ```
 
-Save the updated index.html document and then restart the irblaster.py server. Navigate to <raspberry pi local ip address>:5000 and you should see your remote. You should be able to click on any of the buttons and it should perform the corresponding command! Congratulations, you now have a working remote using the GUI webpage! 
+Save the updated index.html document and then restart the irblaster.py server. Navigate to raspberry-pi-local-ip:5000 and you should see your remote. You should be able to click on any of the buttons and it should perform the corresponding command! Congratulations, you now have a working remote using the GUI webpage! 
 
 We are going to make a final few modifications to the tvblaster.py APIs now so that they are ready to act as fulfillment for a dialogflow intent (this will make more sense when we get to that section - but trust me anyways!). 
 
